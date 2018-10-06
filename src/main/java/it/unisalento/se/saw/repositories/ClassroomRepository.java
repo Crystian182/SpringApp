@@ -12,13 +12,13 @@ import it.unisalento.se.saw.domain.Classroom;
 @Repository
 public interface ClassroomRepository extends JpaRepository<Classroom, Integer> {
 	
-	/*@Query("SELECT c FROM Classroom c WHERE c.building.idbuilding=:build")
+	@Query("SELECT c FROM Classroom c WHERE c.building.idbuilding=:build")
 	public List<Classroom> findClassesByBuild(@Param("build")int build);
 	
-	@Query("SELECT c FROM Classroom c WHERE c.name=:name")
+	@Query("SELECT c FROM Classroom c WHERE c.name like %:name%")
 	public List<Classroom> findClassesByName(@Param("name")String name);
 	
-	@Query("SELECT c FROM Classroom c WHERE c.name=:name AND c.building.idbuilding=:build")
-	public List<Classroom> findClasses(@Param("name")String name, @Param("build")int build);*/
+	@Query("SELECT c FROM Classroom c WHERE c.name like %:name% AND c.building.idbuilding=:build")
+	public List<Classroom> findClasses(@Param("name")String name, @Param("build")int build);
 
 }

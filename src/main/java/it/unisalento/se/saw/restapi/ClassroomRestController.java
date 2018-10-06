@@ -53,6 +53,42 @@ public class ClassroomRestController {
 		return classroomDTO;
 	}
 	
+	@GetMapping(value="/getByIdBuilding/{id}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<ClassroomDTO> getByIdBuilding(@PathVariable("id")int idBuilding) throws ClassroomNotFoundException {
+		List<Classroom> classrooms = classroomService.getByIdBuilding(idBuilding);
+		List<ClassroomDTO> classroomDTOs = new ArrayList<ClassroomDTO>();
+		for(int i=0; i<classrooms.size(); i++) {
+			Classroom classroom = classrooms.get(i);
+			classroomDTOs.add(this.entityToDTO(classroom));
+		}
+		
+		return classroomDTOs;
+	}
+	
+	@GetMapping(value="/getByIdBuildingAndName/{idBuilding}&{classroom}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<ClassroomDTO> getByIdBuildingAndName(@PathVariable("idBuilding")int idBuilding, @PathVariable("classroom")String name) throws ClassroomNotFoundException {
+		List<Classroom> classrooms = classroomService.getByIdBuildingAndName(idBuilding, name);
+		List<ClassroomDTO> classroomDTOs = new ArrayList<ClassroomDTO>();
+		for(int i=0; i<classrooms.size(); i++) {
+			Classroom classroom = classrooms.get(i);
+			classroomDTOs.add(this.entityToDTO(classroom));
+		}
+		
+		return classroomDTOs;
+	}
+	
+	@GetMapping(value="/getByName/{classroom}", produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<ClassroomDTO> getByIName(@PathVariable("classroom")String name) throws ClassroomNotFoundException {
+		List<Classroom> classrooms = classroomService.getByName(name);
+		List<ClassroomDTO> classroomDTOs = new ArrayList<ClassroomDTO>();
+		for(int i=0; i<classrooms.size(); i++) {
+			Classroom classroom = classrooms.get(i);
+			classroomDTOs.add(this.entityToDTO(classroom));
+		}
+		
+		return classroomDTOs;
+	}
+	
 	@PostMapping(value="/edit", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ClassroomDTO edit(@RequestBody ClassroomDTO classroomDTO) throws ClassroomNotFoundException {
 

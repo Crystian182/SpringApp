@@ -38,6 +38,36 @@ public class ClassroomService implements IClassroomService{
 		}
 	}
 	
+	@Transactional(rollbackFor=ClassroomNotFoundException.class)
+	public List<Classroom> getByIdBuilding(int idBuilding) throws ClassroomNotFoundException {
+		
+		try {
+			return classroomRepository.findClassesByBuild(idBuilding);
+		} catch (Exception e) {
+			throw new ClassroomNotFoundException();
+		}
+	}
+	
+	@Transactional(rollbackFor=ClassroomNotFoundException.class)
+	public List<Classroom> getByIdBuildingAndName(int idBuilding, String name) throws ClassroomNotFoundException {
+		
+		try {
+			return classroomRepository.findClasses(name, idBuilding);
+		} catch (Exception e) {
+			throw new ClassroomNotFoundException();
+		}
+	}
+	
+	@Transactional(rollbackFor=ClassroomNotFoundException.class)
+	public List<Classroom> getByName(String name) throws ClassroomNotFoundException {
+		
+		try {
+			return classroomRepository.findClassesByName(name);
+		} catch (Exception e) {
+			throw new ClassroomNotFoundException();
+		}
+	}
+	
 	@Transactional
 	public Classroom edit(Classroom classroom) throws ClassroomNotFoundException {
 		try {
