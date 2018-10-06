@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import it.unisalento.se.saw.Iservices.IClassroomService;
+import it.unisalento.se.saw.Iservices.IInstrumentsService;
 import it.unisalento.se.saw.domain.Building;
 import it.unisalento.se.saw.domain.Classroom;
+import it.unisalento.se.saw.domain.ClassroomHasInstruments;
+import it.unisalento.se.saw.domain.Instruments;
 import it.unisalento.se.saw.dto.BuildingDTO;
 import it.unisalento.se.saw.dto.ClassroomDTO;
+import it.unisalento.se.saw.dto.InstrumentDTO;
 import it.unisalento.se.saw.exceptions.ClassroomNotFoundException;
 
 @RestController
@@ -24,6 +27,9 @@ public class ClassroomRestController {
 	
 	@Autowired
 	IClassroomService classroomService;
+	
+	@Autowired
+	IInstrumentsService instrumentService;
 	
 	public ClassroomRestController() {
 		super();
@@ -49,7 +55,17 @@ public class ClassroomRestController {
 	public ClassroomDTO getById(@PathVariable("id")int id) throws ClassroomNotFoundException {
 		Classroom classroom = classroomService.getById(id);
 		ClassroomDTO classroomDTO = this.entityToDTO(classroom);
-		
+		List<Instruments> instruments = instrumentService.getInstrumentsFromClassroom(id);
+		List<InstrumentDTO> instrumentsDTO = new ArrayList<InstrumentDTO>();
+		for(int i=0; i<instruments.size(); i++) {
+			List<ClassroomHasInstruments> list = new ArrayList<ClassroomHasInstruments>(instruments.get(i).getClassroomHasInstrumentses());
+			InstrumentDTO instrumentDTO = new InstrumentDTO();
+			instrumentDTO.setIdinstruments(instruments.get(i).getIdinstruments());
+			instrumentDTO.setName(instruments.get(i).getName());
+			instrumentDTO.setQuantity(list.get(0).getQuantity());
+			instrumentsDTO.add(instrumentDTO);
+		}
+		classroomDTO.setInstruments(instrumentsDTO);
 		return classroomDTO;
 	}
 	
@@ -115,7 +131,7 @@ public class ClassroomRestController {
 		buildingDTO.setAddress(classroom.getBuilding().getAddress());
 		buildingDTO.setLatitude(classroom.getBuilding().getLatitude());
 		buildingDTO.setLongitude(classroom.getBuilding().getLongitude());
-
+		
 		ClassroomDTO classroomDTO = new ClassroomDTO();
 		classroomDTO.setId(classroom.getIdclassroom());
 		classroomDTO.setName(classroom.getName());

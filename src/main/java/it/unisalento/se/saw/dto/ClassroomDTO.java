@@ -1,5 +1,7 @@
 package it.unisalento.se.saw.dto;
 
+import java.util.List;
+
 public class ClassroomDTO {
 	
 	private int id;
@@ -8,6 +10,7 @@ public class ClassroomDTO {
 	private float latitude;
 	private float longitude;
 	private BuildingDTO building;
+	private List<InstrumentDTO> instruments;
 	
 	public int getId() {
 		return id;
@@ -44,6 +47,12 @@ public class ClassroomDTO {
 	}
 	public void setBuilding(BuildingDTO building) {
 		this.building = building;
+	}
+	public List<InstrumentDTO> getInstruments() {
+		return instruments;
+	}
+	public void setInstruments(List<InstrumentDTO> instruments) {
+		this.instruments = instruments;
 	}
 	
 	
