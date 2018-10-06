@@ -9,9 +9,9 @@ public class TicketDTO {
 	
 	private int id;
 	private String title;
-	private StatusDTO statusDTO;
-	private TeacherDTO teacherDTO;
-	private ClassroomDTO classroomDTO;
+	private StatusDTO status;
+	private TeacherDTO teacher;
+	private ClassroomDTO classroom;
 	private String text;
 	private Date date;
     private String note;
@@ -30,23 +30,25 @@ public class TicketDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public StatusDTO getStatusDTO() {
-		return statusDTO;
+
+	
+	public StatusDTO getStatus() {
+		return status;
 	}
-	public void setStatusDTO(StatusDTO statusDTO) {
-		this.statusDTO = statusDTO;
+	public void setStatus(StatusDTO status) {
+		this.status = status;
 	}
-	public TeacherDTO getTeacherDTO() {
-		return teacherDTO;
+	public TeacherDTO getTeacher() {
+		return teacher;
 	}
-	public void setTeacherDTO(TeacherDTO teacherDTO) {
-		this.teacherDTO = teacherDTO;
+	public void setTeacher(TeacherDTO teacher) {
+		this.teacher = teacher;
 	}
-	public ClassroomDTO getClassroomDTO() {
-		return classroomDTO;
+	public ClassroomDTO getClassroom() {
+		return classroom;
 	}
-	public void setClassroomDTO(ClassroomDTO classroomDTO) {
-		this.classroomDTO = classroomDTO;
+	public void setClassroom(ClassroomDTO classroom) {
+		this.classroom = classroom;
 	}
 	public String getText() {
 		return text;

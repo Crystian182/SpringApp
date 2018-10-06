@@ -97,9 +97,10 @@ public class TicketRestController {
 		
 		ticketDTO.setId(ticket.getIdticket());
 		ticketDTO.setTitle(ticket.getTitle());
-		ticketDTO.setStatusDTO(statusDTO);
-		ticketDTO.setTeacherDTO(teacherDTO);
-		ticketDTO.setClassroomDTO(classroomDTO);
+		ticketDTO.setStatus(statusDTO);
+		ticketDTO.setTeacher(teacherDTO);
+		ticketDTO.setClassroom(classroomDTO);
+		ticketDTO.setText(ticket.getText());
 
 		return ticketDTO;
 	}
@@ -107,18 +108,18 @@ public class TicketRestController {
 	public Ticket DTOToEntity(TicketDTO ticketDTO) {
 
 		User teacher = new User();
-		teacher.setIduser(ticketDTO.getTeacherDTO().getId());
-		teacher.setSurname(ticketDTO.getTeacherDTO().getSurname());
-		teacher.setName(ticketDTO.getTeacherDTO().getName());
+		teacher.setIduser(ticketDTO.getTeacher().getId());
+		teacher.setSurname(ticketDTO.getTeacher().getSurname());
+		teacher.setName(ticketDTO.getTeacher().getName());
 		
 		Building building = new Building();
-		building.setIdbuilding(ticketDTO.getClassroomDTO().getBuilding().getId());
-		building.setName(ticketDTO.getClassroomDTO().getBuilding().getName());
-		building.setAddress(ticketDTO.getClassroomDTO().getBuilding().getAddress());
+		building.setIdbuilding(ticketDTO.getClassroom().getBuilding().getId());
+		building.setName(ticketDTO.getClassroom().getBuilding().getName());
+		building.setAddress(ticketDTO.getClassroom().getBuilding().getAddress());
 		
 		Classroom classroom = new Classroom();
-		classroom.setIdclassroom(ticketDTO.getClassroomDTO().getId());
-		classroom.setName(ticketDTO.getClassroomDTO().getName());
+		classroom.setIdclassroom(ticketDTO.getClassroom().getId());
+		classroom.setName(ticketDTO.getClassroom().getName());
 		classroom.setBuilding(building);
 		
 		Ticket ticket = new Ticket();
