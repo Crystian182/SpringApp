@@ -60,7 +60,7 @@ public class ClassroomRestController {
 		for(int i=0; i<instruments.size(); i++) {
 			List<ClassroomHasInstruments> list = new ArrayList<ClassroomHasInstruments>(instruments.get(i).getClassroomHasInstrumentses());
 			InstrumentDTO instrumentDTO = new InstrumentDTO();
-			instrumentDTO.setIdinstruments(instruments.get(i).getIdinstruments());
+			instrumentDTO.setId(instruments.get(i).getIdinstruments());
 			instrumentDTO.setName(instruments.get(i).getName());
 			instrumentDTO.setQuantity(list.get(0).getQuantity());
 			instrumentsDTO.add(instrumentDTO);

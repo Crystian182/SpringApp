@@ -7,16 +7,16 @@ import it.unisalento.se.saw.domain.ClassroomHasInstruments;
 
 public class InstrumentDTO {
 	
-	private Integer idinstruments;
+	private Integer id;
     private String name;
     private int quantity;
 	
     
-    public Integer getIdinstruments() {
-		return idinstruments;
+    public Integer getId() {
+		return id;
 	}
-	public void setIdinstruments(Integer idinstruments) {
-		this.idinstruments = idinstruments;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;
