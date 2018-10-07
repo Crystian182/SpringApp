@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import it.unisalento.se.saw.Iservices.ITicketService;
 import it.unisalento.se.saw.domain.Building;
 import it.unisalento.se.saw.domain.Classroom;
+import it.unisalento.se.saw.domain.Status;
 import it.unisalento.se.saw.domain.Ticket;
 import it.unisalento.se.saw.domain.User;
+import it.unisalento.se.saw.dto.BuildingDTO;
 import it.unisalento.se.saw.dto.ClassroomDTO;
 import it.unisalento.se.saw.dto.StatusDTO;
 import it.unisalento.se.saw.dto.TeacherDTO;
@@ -85,9 +87,13 @@ public class TicketRestController {
 		teacherDTO.setName(ticket.getUserByUserIduser().getName());
 		teacherDTO.setSurname(ticket.getUserByUserIduser().getSurname());
 		
+		BuildingDTO buildingDTO = new BuildingDTO();
+		buildingDTO.setId(ticket.getClassroom().getBuilding().getIdbuilding());
+		
 		ClassroomDTO classroomDTO = new ClassroomDTO();
 		classroomDTO.setId(ticket.getClassroom().getIdclassroom());
 		classroomDTO.setName(ticket.getClassroom().getName());
+		classroomDTO.setBuilding(buildingDTO);
 		
 		StatusDTO statusDTO = new StatusDTO();
 		statusDTO.setIdstatus(ticket.getStatus().getIdstatus());
@@ -101,6 +107,7 @@ public class TicketRestController {
 		ticketDTO.setTeacher(teacherDTO);
 		ticketDTO.setClassroom(classroomDTO);
 		ticketDTO.setText(ticket.getText());
+		ticketDTO.setDate(ticket.getDate());
 
 		return ticketDTO;
 	}
@@ -122,6 +129,10 @@ public class TicketRestController {
 		classroom.setName(ticketDTO.getClassroom().getName());
 		classroom.setBuilding(building);
 		
+		Status status = new Status();
+		status.setIdstatus(ticketDTO.getStatus().getIdstatus());
+		status.setDescription(ticketDTO.getStatus().getDescription());
+		
 		Ticket ticket = new Ticket();
 		try {
 			ticket.setIdticket(ticketDTO.getId());
@@ -133,6 +144,7 @@ public class TicketRestController {
 		ticket.setUserByUserIduser(teacher);
 		ticket.setText(ticketDTO.getText());
 		ticket.setClassroom(classroom);
+		ticket.setStatus(status);
 		
 		return ticket;
 	}
