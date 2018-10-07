@@ -62,7 +62,7 @@ public class InstrumentRestController {
 	
 	public InstrumentDTO EntityToDTO(Instruments instruments) {
 		InstrumentDTO instrumentDTO = new InstrumentDTO();
-		instrumentDTO.setIdinstruments(instruments.getIdinstruments());
+		instrumentDTO.setId(instruments.getIdinstruments());
 		instrumentDTO.setName(instruments.getName());
 	
 		return instrumentDTO;
@@ -70,7 +70,7 @@ public class InstrumentRestController {
 	
 	public Instruments DTOToEntity(InstrumentDTO instrumentDTO) {
 		Instruments instruments = new Instruments();
-		instruments.setIdinstruments(instrumentDTO.getIdinstruments());
+		instruments.setIdinstruments(instrumentDTO.getId());
 		instruments.setName(instrumentDTO.getName());
 	
 		return instruments;
