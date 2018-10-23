@@ -1,9 +1,8 @@
 package it.unisalento.se.saw.dto;
 
 import java.util.Date;
+import java.util.List;
 
-import it.unisalento.se.saw.domain.Classroom;
-import it.unisalento.se.saw.domain.Status;
 
 public class TicketDTO {
 	
@@ -14,7 +13,8 @@ public class TicketDTO {
 	private ClassroomDTO classroom;
 	private String text;
 	private Date date;
-    private String note;
+	private TicketMessageDTO ticketmessage;
+    private List<TicketMessageDTO> ticketmessages;
     
 	
 
@@ -62,11 +62,19 @@ public class TicketDTO {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getNote() {
-		return note;
+	
+	
+	public TicketMessageDTO getTicketmessage() {
+		return ticketmessage;
 	}
-	public void setNote(String note) {
-		this.note = note;
+	public void setTicketmessage(TicketMessageDTO ticketmessage) {
+		this.ticketmessage = ticketmessage;
+	}
+	public List<TicketMessageDTO> getTicketmessages() {
+		return ticketmessages;
+	}
+	public void setTicketmessages(List<TicketMessageDTO> ticketmessages) {
+		this.ticketmessages = ticketmessages;
 	}
 	
 

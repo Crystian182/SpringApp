@@ -1,14 +1,19 @@
 package it.unisalento.se.saw.services;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.unisalento.se.saw.Iservices.ITicketService;
-
+import it.unisalento.se.saw.domain.ClassroomHasInstruments;
+import it.unisalento.se.saw.domain.Instruments;
 import it.unisalento.se.saw.domain.Ticket;
+import it.unisalento.se.saw.domain.Ticketmessage;
 import it.unisalento.se.saw.exceptions.TicketNotFoundException;
 import it.unisalento.se.saw.repositories.TicketRepository;
 
@@ -36,10 +41,16 @@ public class TicketService implements ITicketService {
 	}
 	
 	@Transactional
+	public List<Ticketmessage> getMessages(int idticket) {
+		return ticketRepository.getMessages(idticket);
+	}
+	
+	@Transactional
 	public Ticket save(Ticket ticket) {
 		// TODO Auto-generated method stub
 		return ticketRepository.save(ticket);
 	}
+	
 	
 	@Transactional
 	public Ticket edit(Ticket ticket) throws TicketNotFoundException{
