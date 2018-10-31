@@ -13,7 +13,6 @@ public class TicketDTO {
 	private ClassroomDTO classroom;
 	private String text;
 	private Date date;
-	private TicketMessageDTO ticketmessage;
     private List<TicketMessageDTO> ticketmessages;
     
 	
@@ -61,14 +60,6 @@ public class TicketDTO {
 	}
 	public void setDate(Date date) {
 		this.date = date;
-	}
-	
-	
-	public TicketMessageDTO getTicketmessage() {
-		return ticketmessage;
-	}
-	public void setTicketmessage(TicketMessageDTO ticketmessage) {
-		this.ticketmessage = ticketmessage;
 	}
 	public List<TicketMessageDTO> getTicketmessages() {
 		return ticketmessages;

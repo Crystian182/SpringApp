@@ -1,7 +1,10 @@
 package it.unisalento.se.saw.restapi;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +18,7 @@ import it.unisalento.se.saw.Iservices.IInstrumentsService;
 import it.unisalento.se.saw.domain.Building;
 import it.unisalento.se.saw.domain.Classroom;
 import it.unisalento.se.saw.domain.ClassroomHasInstruments;
+import it.unisalento.se.saw.domain.ClassroomHasInstrumentsId;
 import it.unisalento.se.saw.domain.Instruments;
 import it.unisalento.se.saw.dto.BuildingDTO;
 import it.unisalento.se.saw.dto.ClassroomDTO;
